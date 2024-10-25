@@ -1601,7 +1601,28 @@ export_hafs_regional ()
   export ocn_model=hycom
   export CPLMODE=hafs
   export MESH_WAV=mesh.hafs.nc
+
 }
+
+export_test_shel_inp()
+{
+  export WW3_INPF=true
+  RUN_BEG="${SYEAR}${SMONTH}${SDAY} $(printf "%02d" $(( SHOUR  )))0000"
+  export RUN_BEG
+  RUN_END="2100${SMONTH}${SDAY} $(printf "%02d" $(( SHOUR  )))0000"
+  export RUN_END
+  export OUT_BEG=${RUN_BEG}
+  export OUT_END=${RUN_END}
+  export RST_BEG=${RUN_BEG}
+  export RST_2_BEG=${RUN_BEG}
+  export RST_END=${RUN_END}
+  export RST_2_END=${RUN_END}
+  export CURRLINE='F F'
+  export WINDLINE='C F'
+  export ICELINE='F F'
+ 
+  }
+
 
 export_hafs ()
 {

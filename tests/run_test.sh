@@ -118,7 +118,7 @@ case ${MACHINE_ID} in
     ;;
   gaea)
     module use /ncrc/proj/epic/spack-stack/spack-stack-1.6.0/envs/unified-env/install/modulefiles/Core
-    module load stack-intel/2023.2.0 stack-cray-mpich/8.1.28
+    module load stack-intel/2023.1.0 stack-cray-mpich/8.1.25
     module load nccmp/1.9.0.1
     ;;
   derecho)
@@ -270,6 +270,9 @@ source ./fv3_run
 if [[ ${CPLWAV} == .true. ]]; then
   if [[ ${WW3_MULTIGRID} = 'true' ]]; then
     atparse < "${PATHRT}/parm/ww3_multi.inp.IN" > ww3_multi.inp
+  elif [[ ${WW3_INPF} = 'true' ]]; then
+    atparse < "${PATHRT}/parm/ww3_shel.inp.IN" > ww3_shel.inp
+    cp "${PATHRT}/parm/ww3_points.list" .
   else
     atparse < "${PATHRT}/parm/ww3_shel.nml.IN" > ww3_shel.nml
     cp "${PATHRT}/parm/ww3_points.list" .

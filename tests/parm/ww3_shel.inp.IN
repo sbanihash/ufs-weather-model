@@ -6,9 +6,9 @@ $ T/F flag for definition as a homogeneous field.
 $
 $ Include ice and mud parameters only if IC1/2/3/4 used :
    F F     Water levels
-   @[INPUT_CURFLD]
+   @[CURRLINE]
    C F     Winds
-   @[INPUT_ICEFLD]
+   @[ICELINE]
    F F     Atmospheric momentum
    F F     Air density
    F       Assimilation data : Mean parameters
@@ -25,11 +25,13 @@ $
 $ IOSTYP
    1
 $
-   @[RUN_BEG]   @[WW3_DTFLD]  @[RUN_END] @[GOFILETYPE]
+   @[OUT_BEG]  @[WW3_DTFLD]  @[OUT_END] @[GOFILETYPE]
    N
    @[WW3_OUTPARS]
 $
-   @[RUN_BEG]   @[WW3_DTPNT]  @[RUN_END] @[POFILETYPE]
+   @[OUT_BEG]  @[WW3_DTPNT]  @[OUT_END] @[POFILETYPE]
+
+$
 $
 $ Global output point data file for global wave ensembles
 $
@@ -326,15 +328,11 @@ $ ---------------------------------------------------------------
 $ End of list
 $
 $ ---------------------------------------------------------------
-$
+
      0.00    0.00  'STOPSTRING'  999.   XXX  NCEP       0
 $
-$ Type 3 : Output along track.
-$          Flag for formatted input file.
-$                         The data files are track_i.ww3 and
-$                         track_o.ww3, see w3iotr.ftn for ad. doc.
-$
-   @[RUN_BEG]      0  @[RUN_END]
+   @[OUT_BEG]      0  @[OUT_END]
+
 $
 $ Type 4 : Restart files (no additional data required).
 $                               The data file is restartN.ww3, see
@@ -343,12 +341,12 @@ $          Flag for second restart (data server mode)
 $          Flag for extra fields in the restart file (coupling restart)
 $
 $ Keep next two lines formatting as is to allow proper parsing
-   @[RUN_BEG]   @[DTRST]  @[RUN_END] T
-@[RUN_BEG]   @[WW3_DT_2_RST]  @[RUN_END]
+   @[RST_BEG]   @[DTRST]  @[RST_END] @[RSTTYPE]
+@[RST_2_BEG]   @[WW3_DT_2_RST]  @[RST_2_END]
+
+   @[OUT_BEG]      0  @[OUT_END]
 $
-   @[RUN_BEG]      0  @[RUN_END]
-$
-   @[RUN_BEG]      0  @[RUN_END]
+   @[OUT_BEG]      0  @[OUT_END]
 $
   'the_end'  0
 $
